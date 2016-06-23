@@ -862,7 +862,6 @@
     <None Include="Resources\Ducky.ico" />
     <None Include="Resources\arrow-return-180-left.png" />
     <None Include="Resources\cross-script.png" />
-    <None Include="Resources\list-arrow-green.gif" />
     <None Include="Resources\list-arrow-green1.gif" />
     <Content Include="Resources\Microsoft\Mask\AllLoadedTests_8644_24.bmp" />
     <Content Include="Resources\Microsoft\Mask\ExtractMethod_6786_32.bmp" />
