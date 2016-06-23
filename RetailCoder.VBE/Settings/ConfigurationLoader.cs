@@ -39,6 +39,13 @@ namespace Rubberduck.Settings
 
             var config = base.LoadConfiguration();
 
+            // *Don't* crash if there was a problem reading the
+            // user config file...
+            if (config.UserSettings == null)
+            {
+               config = GetDefaultConfiguration();
+            }
+
             if (config.UserSettings.LanguageSetting == null)
             {
                 config.UserSettings.LanguageSetting = new DisplayLanguageSetting("en-US");

@@ -76,6 +76,7 @@ namespace Rubberduck.UI.UnitTesting
             addTestModuleButton.Click += AddTestModuleButtonClicked;
             addExpectedErrorTestMethodButton.Click += AddExpectedErrorTestMethodButtonClicked;
             runAllTestsMenuItem.Click += RunAllTestsMenuItemClicked;
+            runButton.ButtonClick += RunAllTestsMenuItemClicked;
             runFailedTestsMenuItem.Click += RunFailedTestsMenuItemClicked;
             runPassedTestsMenuItem.Click += RunPassedTestsMenuItemClicked;
             runNotRunTestsMenuItem.Click += RunNotRunTestsMenuItemClicked;
