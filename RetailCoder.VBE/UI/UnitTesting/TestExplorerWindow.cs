@@ -208,6 +208,8 @@ namespace Rubberduck.UI.UnitTesting
         }
 
         private void UpdateSelectedIndices() {
+            _selectedIndices.Clear();   
+
             for (int i = 0; i < testOutputGridView.Rows.Count; i++) {
                 if (testOutputGridView.Rows[i].Selected)
                     _selectedIndices.Add(i);
