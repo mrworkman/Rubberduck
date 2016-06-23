@@ -31,27 +31,11 @@ namespace Rubberduck.UI.UnitTesting
         /// </summary>
         private void InitializeComponent()
         {
-         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestExplorerWindow));
          System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
          System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestExplorerWindow));
          this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-         this.refreshTestsButton = new System.Windows.Forms.ToolStripButton();
          this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-         this.runButton = new System.Windows.Forms.ToolStripSplitButton();
-         this.runAllTestsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.runSelectedTestMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-         this.runNotRunTestsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.runFailedTestsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.runPassedTestsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-         this.runLastRunMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.addButton = new System.Windows.Forms.ToolStripDropDownButton();
-         this.addTestModuleButton = new System.Windows.Forms.ToolStripMenuItem();
-         this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-         this.addTestMethodButton = new System.Windows.Forms.ToolStripMenuItem();
-         this.addExpectedErrorTestMethodButton = new System.Windows.Forms.ToolStripMenuItem();
-         this.gotoSelectionButton = new System.Windows.Forms.ToolStripButton();
          this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
          this.testProgressBar = new System.Windows.Forms.ToolStripProgressBar();
          this.TotalElapsedMilisecondsLabel = new System.Windows.Forms.ToolStripLabel();
@@ -61,6 +45,23 @@ namespace Rubberduck.UI.UnitTesting
          this.inconclusiveTestsLabel = new System.Windows.Forms.ToolStripLabel();
          this.panel1 = new System.Windows.Forms.Panel();
          this.testOutputGridView = new System.Windows.Forms.DataGridView();
+         this.refreshTestsButton = new System.Windows.Forms.ToolStripButton();
+         this.runButton = new System.Windows.Forms.ToolStripSplitButton();
+         this.runAllTestsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.runSelectedTestMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+         this.runNotRunTestsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.runFailedTestsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.runPassedTestsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+         this.runLastRunMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.runSelectedButton = new System.Windows.Forms.ToolStripButton();
+         this.addButton = new System.Windows.Forms.ToolStripDropDownButton();
+         this.addTestModuleButton = new System.Windows.Forms.ToolStripMenuItem();
+         this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+         this.addTestMethodButton = new System.Windows.Forms.ToolStripMenuItem();
+         this.addExpectedErrorTestMethodButton = new System.Windows.Forms.ToolStripMenuItem();
+         this.gotoSelectionButton = new System.Windows.Forms.ToolStripButton();
          this.toolStrip1.SuspendLayout();
          this.panel1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.testOutputGridView)).BeginInit();
@@ -73,6 +74,7 @@ namespace Rubberduck.UI.UnitTesting
             this.refreshTestsButton,
             this.toolStripSeparator1,
             this.runButton,
+            this.runSelectedButton,
             this.addButton,
             this.gotoSelectionButton,
             this.toolStripSeparator5,
@@ -84,9 +86,96 @@ namespace Rubberduck.UI.UnitTesting
             this.inconclusiveTestsLabel});
          this.toolStrip1.Location = new System.Drawing.Point(0, 0);
          this.toolStrip1.Name = "toolStrip1";
-         this.toolStrip1.Size = new System.Drawing.Size(600, 27);
+         this.toolStrip1.Size = new System.Drawing.Size(670, 27);
          this.toolStrip1.TabIndex = 1;
          this.toolStrip1.Text = "toolStrip1";
+         // 
+         // toolStripSeparator1
+         // 
+         this.toolStripSeparator1.Name = "toolStripSeparator1";
+         this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+         // 
+         // toolStripSeparator5
+         // 
+         this.toolStripSeparator5.Name = "toolStripSeparator5";
+         this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
+         // 
+         // testProgressBar
+         // 
+         this.testProgressBar.ForeColor = System.Drawing.Color.LimeGreen;
+         this.testProgressBar.Name = "testProgressBar";
+         this.testProgressBar.Size = new System.Drawing.Size(100, 24);
+         this.testProgressBar.Step = 1;
+         // 
+         // TotalElapsedMilisecondsLabel
+         // 
+         this.TotalElapsedMilisecondsLabel.Name = "TotalElapsedMilisecondsLabel";
+         this.TotalElapsedMilisecondsLabel.Size = new System.Drawing.Size(32, 24);
+         this.TotalElapsedMilisecondsLabel.Text = "0 ms";
+         // 
+         // toolStripSeparator6
+         // 
+         this.toolStripSeparator6.Name = "toolStripSeparator6";
+         this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
+         // 
+         // passedTestsLabel
+         // 
+         this.passedTestsLabel.Name = "passedTestsLabel";
+         this.passedTestsLabel.Size = new System.Drawing.Size(52, 24);
+         this.passedTestsLabel.Text = "0 Passed";
+         // 
+         // failedTestsLabel
+         // 
+         this.failedTestsLabel.Name = "failedTestsLabel";
+         this.failedTestsLabel.Size = new System.Drawing.Size(47, 24);
+         this.failedTestsLabel.Text = "0 Failed";
+         // 
+         // inconclusiveTestsLabel
+         // 
+         this.inconclusiveTestsLabel.Name = "inconclusiveTestsLabel";
+         this.inconclusiveTestsLabel.Size = new System.Drawing.Size(82, 24);
+         this.inconclusiveTestsLabel.Text = "0 Inconclusive";
+         // 
+         // panel1
+         // 
+         this.panel1.Controls.Add(this.testOutputGridView);
+         this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.panel1.Location = new System.Drawing.Point(0, 27);
+         this.panel1.Name = "panel1";
+         this.panel1.Size = new System.Drawing.Size(670, 173);
+         this.panel1.TabIndex = 2;
+         // 
+         // testOutputGridView
+         // 
+         this.testOutputGridView.AllowUserToAddRows = false;
+         this.testOutputGridView.AllowUserToDeleteRows = false;
+         this.testOutputGridView.AllowUserToOrderColumns = true;
+         this.testOutputGridView.AllowUserToResizeRows = false;
+         dataGridViewCellStyle3.BackColor = System.Drawing.Color.Lavender;
+         dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+         dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+         dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+         this.testOutputGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+         this.testOutputGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+         this.testOutputGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+         this.testOutputGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+         dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+         dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+         dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+         dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+         dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+         dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+         this.testOutputGridView.DefaultCellStyle = dataGridViewCellStyle4;
+         this.testOutputGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.testOutputGridView.Location = new System.Drawing.Point(0, 0);
+         this.testOutputGridView.Name = "testOutputGridView";
+         this.testOutputGridView.ReadOnly = true;
+         this.testOutputGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+         this.testOutputGridView.Size = new System.Drawing.Size(670, 173);
+         this.testOutputGridView.TabIndex = 1;
+         this.testOutputGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellDoubleClicked);
+         this.testOutputGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ColumnHeaderMouseClicked);
          // 
          // refreshTestsButton
          // 
@@ -97,11 +186,6 @@ namespace Rubberduck.UI.UnitTesting
          this.refreshTestsButton.Size = new System.Drawing.Size(24, 24);
          this.refreshTestsButton.ToolTipText = "Refresh";
          this.refreshTestsButton.Click += new System.EventHandler(this.RefreshTestsButtonClick);
-         // 
-         // toolStripSeparator1
-         // 
-         this.toolStripSeparator1.Name = "toolStripSeparator1";
-         this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
          // 
          // runButton
          // 
@@ -117,7 +201,7 @@ namespace Rubberduck.UI.UnitTesting
          this.runButton.Image = global::Rubberduck.Properties.Resources.control_000_small;
          this.runButton.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.runButton.Name = "runButton";
-         this.runButton.Size = new System.Drawing.Size(61, 24);
+         this.runButton.Size = new System.Drawing.Size(64, 24);
          this.runButton.Text = "&Run";
          // 
          // runAllTestsMenuItem
@@ -136,6 +220,7 @@ namespace Rubberduck.UI.UnitTesting
          this.runSelectedTestMenuItem.Name = "runSelectedTestMenuItem";
          this.runSelectedTestMenuItem.Size = new System.Drawing.Size(234, 26);
          this.runSelectedTestMenuItem.Text = "&Selected Tests";
+         this.runSelectedTestMenuItem.Visible = false;
          // 
          // toolStripSeparator3
          // 
@@ -178,6 +263,14 @@ namespace Rubberduck.UI.UnitTesting
             | System.Windows.Forms.Keys.L)));
          this.runLastRunMenuItem.Size = new System.Drawing.Size(234, 26);
          this.runLastRunMenuItem.Text = "Repeat &Last Run";
+         // 
+         // runSelectedButton
+         // 
+         this.runSelectedButton.Image = global::Rubberduck.Properties.Resources.list_arrow_green1;
+         this.runSelectedButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.runSelectedButton.Name = "runSelectedButton";
+         this.runSelectedButton.Size = new System.Drawing.Size(99, 24);
+         this.runSelectedButton.Text = "Run Selected";
          // 
          // addButton
          // 
@@ -230,88 +323,6 @@ namespace Rubberduck.UI.UnitTesting
          this.gotoSelectionButton.Size = new System.Drawing.Size(24, 24);
          this.gotoSelectionButton.ToolTipText = "Navigate to selected";
          // 
-         // toolStripSeparator5
-         // 
-         this.toolStripSeparator5.Name = "toolStripSeparator5";
-         this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
-         // 
-         // testProgressBar
-         // 
-         this.testProgressBar.ForeColor = System.Drawing.Color.LimeGreen;
-         this.testProgressBar.Name = "testProgressBar";
-         this.testProgressBar.Size = new System.Drawing.Size(100, 24);
-         this.testProgressBar.Step = 1;
-         // 
-         // TotalElapsedMilisecondsLabel
-         // 
-         this.TotalElapsedMilisecondsLabel.Name = "TotalElapsedMilisecondsLabel";
-         this.TotalElapsedMilisecondsLabel.Size = new System.Drawing.Size(32, 24);
-         this.TotalElapsedMilisecondsLabel.Text = "0 ms";
-         // 
-         // toolStripSeparator6
-         // 
-         this.toolStripSeparator6.Name = "toolStripSeparator6";
-         this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
-         // 
-         // passedTestsLabel
-         // 
-         this.passedTestsLabel.Name = "passedTestsLabel";
-         this.passedTestsLabel.Size = new System.Drawing.Size(52, 24);
-         this.passedTestsLabel.Text = "0 Passed";
-         // 
-         // failedTestsLabel
-         // 
-         this.failedTestsLabel.Name = "failedTestsLabel";
-         this.failedTestsLabel.Size = new System.Drawing.Size(47, 24);
-         this.failedTestsLabel.Text = "0 Failed";
-         // 
-         // inconclusiveTestsLabel
-         // 
-         this.inconclusiveTestsLabel.Name = "inconclusiveTestsLabel";
-         this.inconclusiveTestsLabel.Size = new System.Drawing.Size(82, 24);
-         this.inconclusiveTestsLabel.Text = "0 Inconclusive";
-         // 
-         // panel1
-         // 
-         this.panel1.Controls.Add(this.testOutputGridView);
-         this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.panel1.Location = new System.Drawing.Point(0, 27);
-         this.panel1.Name = "panel1";
-         this.panel1.Size = new System.Drawing.Size(600, 173);
-         this.panel1.TabIndex = 2;
-         // 
-         // testOutputGridView
-         // 
-         this.testOutputGridView.AllowUserToAddRows = false;
-         this.testOutputGridView.AllowUserToDeleteRows = false;
-         this.testOutputGridView.AllowUserToOrderColumns = true;
-         this.testOutputGridView.AllowUserToResizeRows = false;
-         dataGridViewCellStyle3.BackColor = System.Drawing.Color.Lavender;
-         dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-         dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-         dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         this.testOutputGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-         this.testOutputGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-         this.testOutputGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-         this.testOutputGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-         dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-         dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-         dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-         dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-         dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-         dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-         this.testOutputGridView.DefaultCellStyle = dataGridViewCellStyle4;
-         this.testOutputGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.testOutputGridView.Location = new System.Drawing.Point(0, 0);
-         this.testOutputGridView.Name = "testOutputGridView";
-         this.testOutputGridView.ReadOnly = true;
-         this.testOutputGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-         this.testOutputGridView.Size = new System.Drawing.Size(600, 173);
-         this.testOutputGridView.TabIndex = 1;
-         this.testOutputGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridCellDoubleClicked);
-         this.testOutputGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ColumnHeaderMouseClicked);
-         // 
          // TestExplorerWindow
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,7 +331,7 @@ namespace Rubberduck.UI.UnitTesting
          this.Controls.Add(this.toolStrip1);
          this.MinimumSize = new System.Drawing.Size(600, 200);
          this.Name = "TestExplorerWindow";
-         this.Size = new System.Drawing.Size(600, 200);
+         this.Size = new System.Drawing.Size(670, 200);
          this.toolStrip1.ResumeLayout(false);
          this.toolStrip1.PerformLayout();
          this.panel1.ResumeLayout(false);
@@ -359,5 +370,6 @@ namespace Rubberduck.UI.UnitTesting
         private ToolStripLabel inconclusiveTestsLabel;
         private ToolStripLabel TotalElapsedMilisecondsLabel;
         private ToolStripSeparator toolStripSeparator6;
+      private ToolStripButton runSelectedButton;
    }
 }

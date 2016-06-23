@@ -9,6 +9,8 @@ namespace Rubberduck.UI.UnitTesting
 {
     public partial class TestExplorerWindow : UserControl, ITestExplorerWindow
     {
+        private List<int> _selectedIndices = new List<int>();
+
         private IList<TestExplorerItem> _playList;
         public DataGridView GridView { get { return testOutputGridView; } }
 
@@ -20,6 +22,8 @@ namespace Rubberduck.UI.UnitTesting
             {
                 _allTests = value;
                 testOutputGridView.DataSource = _allTests;
+                testOutputGridView.ClearSelection();
+                SelectGridRows();
                 testOutputGridView.Refresh();
             }
         }
@@ -83,6 +87,8 @@ namespace Rubberduck.UI.UnitTesting
             runLastRunMenuItem.Click += RunLastRunMenuItemClicked;
             runSelectedTestMenuItem.Click += RunSelectedTestMenuItemClicked;
 
+            runSelectedButton.Click += RunSelectedTestMenuItemClicked;
+
             addTestMethodButton.Text = RubberduckUI.TestExplorer_AddTestMethod;
             addTestModuleButton.Text = RubberduckUI.TestExplorer_AddTestModule;
             addExpectedErrorTestMethodButton.Text = RubberduckUI.TestExplorer_AddExpectedErrorTestMethod;
@@ -125,6 +131,8 @@ namespace Rubberduck.UI.UnitTesting
             var handler = OnRunSelectedTestButtonClick;
             if (handler != null && AllTests.Any())
             {
+                UpdateSelectedIndices();
+            
                 var selection = AllTests.Where(test => testOutputGridView.SelectedRows
                                                                           .Cast<DataGridViewRow>()
                                                                           .Select(row => row.DataBoundItem as TestExplorerItem)
@@ -199,6 +207,13 @@ namespace Rubberduck.UI.UnitTesting
             testOutputGridView.DataSource = AllTests;
         }
 
+        private void UpdateSelectedIndices() {
+            for (int i = 0; i < testOutputGridView.Rows.Count; i++) {
+                if (testOutputGridView.Rows[i].Selected)
+                    _selectedIndices.Add(i);
+            }
+        }
+
         private int _completedCount;
         private void UpdateProgress()
         {
@@ -231,6 +246,13 @@ namespace Rubberduck.UI.UnitTesting
             AllTests = new BindingList<TestExplorerItem>(tests.Select(test => new TestExplorerItem(test.Key, test.Value)).ToList());
             testOutputGridView.DataSource = AllTests;
             testOutputGridView.Refresh();
+        }
+
+        private void SelectGridRows() {
+            foreach (var i in _selectedIndices) {
+                if (testOutputGridView.Rows.Count > i)
+                  testOutputGridView.Rows[i].Selected = true;
+            }
         }
 
         public void SetPlayList(IEnumerable<TestMethod> tests)
